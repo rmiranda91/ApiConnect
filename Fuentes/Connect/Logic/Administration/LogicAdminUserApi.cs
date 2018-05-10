@@ -31,7 +31,7 @@ namespace Logic.Administration
             }
             catch (Exception ex) { 
                 // Registrar el error real
-                DatLogError datError = new DatLogError();
+                DataLogError datError = new DataLogError();
                 LogError error = new LogError();
 
                 error.module = "ADMIN";

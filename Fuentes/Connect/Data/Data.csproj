@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="Administration\DataAdminUserApi.cs" />
     <Compile Include="DataBase.cs" />
-    <Compile Include="Error\DatLogError.cs" />
+    <Compile Include="Error\DataLogError.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

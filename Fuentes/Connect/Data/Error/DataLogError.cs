@@ -9,7 +9,7 @@ using System.Data;
 
 namespace Data.Error
 {
-    public class DatLogError
+    public class DataLogError
     {
         public void newError(LogError error) {
             DataBase db = new DataBase();
