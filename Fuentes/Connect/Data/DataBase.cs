@@ -159,6 +159,50 @@ namespace Data
             }
         }
 
+        /// <summary>
+        /// Ejecutar una consulta y retornar un DataTable de un select
+        /// </summary>
+        /// <param name="query">Consulta a ejecutar</param>
+        /// <param name="parameter">Parámetros de la consulta, por defecto null</param>
+        /// <param name="cmdType">Tipo de comando, SP, Texto, por defecto SP</param>
+        /// <param name="timeOut">TimeOut para la ejecución, por defecto 60 seg</param>
+        /// <returns></returns>
+        public DataTable executeDataTable(string query, SqlParameter[] parameter = null, CommandType cmdType = CommandType.StoredProcedure, int timeOut = 60) {
+            try
+            {
+                DataTable dt = new DataTable();
 
+                /* Primero establecer conexión a la Base de Datos */
+                if (this.Conectar())
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    SqlDataAdapter da;
+
+                    cmd.Connection = cnn;
+                    cmd.CommandText = query;
+                    cmd.CommandType = cmdType;
+                    cmd.CommandTimeout = timeOut;
+
+                    /* Agregar parámetros al command */
+                    if (parameter != null)
+                    {
+                        this.addParameter(parameter, ref cmd);
+                    }
+
+                    da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    da.Dispose();
+                }
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally {
+                this.Desconectar();
+            }
+        }
     }
 }

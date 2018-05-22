@@ -1,0 +1,58 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Inicio</title>
+
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div class="container-fuild">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                <div class="jumbotron">
+                    <div class="container">
+                        <h3 class="display-5">Bienvenido Ren&eacute; Miranda!</h3>
+                        <hr />
+                    </div>
+                    <div class="container">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Administraci&oacute;n</h5>
+                                        <p class="card-text">Administre las configuraciones cr&iacute;ticas del sistema, cat&aacute;logos, par&aacute;metros, etc.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Pacientes</h5>
+                                        <p class="card-text">Gestione el registro de nuevos pacientes, actualización de datos, ingresos y altas.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                                <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Inventario</h5>
+                                        <p class="card-text">Gestione entradas y salidas de inventario, consulta de existencias de uno o varios productos.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery", "~/bundles/bootstrap")
+</body>
+</html>

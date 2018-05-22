@@ -39,13 +39,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Administration\RequestAdminApplication.cs" />
+    <Compile Include="Administration\RequestAdminRole.cs" />
+    <Compile Include="Administration\RequestAdminUser.cs" />
+    <Compile Include="Administration\RequestUserValidate.cs" />
+    <Compile Include="Administration\ResponseAdminApplication.cs" />
+    <Compile Include="Administration\ResponseAdminRole.cs" />
+    <Compile Include="Administration\ResponseAdminUser.cs" />
+    <Compile Include="Administration\ResponseUserValidate.cs" />
+    <Compile Include="Common\Request.cs" />
+    <Compile Include="Common\Response.cs" />
     <Compile Include="Error\LogError.cs" />
+    <Compile Include="Person\RequestPersonCrud.cs" />
+    <Compile Include="Person\ResponsePersonCrud.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Administration\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

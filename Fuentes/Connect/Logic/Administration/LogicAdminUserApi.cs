@@ -17,6 +17,7 @@ namespace Logic.Administration
                 object objresponse = new object();
                 bool response = false;
                 DataAdminUserApi datUserApi = new DataAdminUserApi();
+                
                 objresponse = datUserApi.validateUserApi(user, password);
 
                 if (objresponse != null)

@@ -1,0 +1,63 @@
+﻿@{
+    Layout = null;
+}
+
+@model CentroMedicoQuirurgico.Models.Entity.ValidateUserRequest
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Ingreso</title>
+
+    @Styles.Render("~/Content/css");
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <br />
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="card border-primary mb-3">
+                    <div class="card-header text-center">Ingreso</div>
+                    <div class="card-body text-primary">
+                        @using (Html.BeginForm())
+                        {
+                            
+                            <div class="form-group">
+                                <label for="txt_usuario">Usuario</label>
+                                @Html.TextBoxFor(m => Model.user, new { @class="form-control", @placeholder="Ingresa tu usuario" })
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Contrase&ntilde;a</label>
+                                @Html.PasswordFor(m => Model.password, new { @class="form-control", @placeholder="Ingresa tu contraseña" })
+                            </div>
+                            <div class="form-group">
+                                @ViewBag.message
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-block">Iniciar sesi&oacute;n</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery", "~/bundles/bootstrap");
+</body>
+</html>
