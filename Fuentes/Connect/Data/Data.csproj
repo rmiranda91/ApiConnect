@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Administration\DataAdminApplication.cs" />
     <Compile Include="Administration\DataAdminRole.cs" />
+    <Compile Include="Administration\DataAdminRoleApplication.cs" />
     <Compile Include="Administration\DataAdminUserApi.cs" />
     <Compile Include="Administration\DataAdminUser.cs" />
     <Compile Include="DataBase.cs" />

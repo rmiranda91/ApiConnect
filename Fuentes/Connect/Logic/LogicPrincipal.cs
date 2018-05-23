@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Data;
 using System.Security.Cryptography;
+using System.Data;
 
 namespace Logic
 {
@@ -26,5 +27,15 @@ namespace Logic
             }
         }
 
+        public static DataTable makeDt(string columns) {
+            DataTable dt = new DataTable();
+            string[] col = columns.Split(',');
+
+            foreach (string c in col) {
+                dt.Columns.Add(c);
+            }
+
+            return dt;
+        }
     }
 }

@@ -41,11 +41,13 @@
   <ItemGroup>
     <Compile Include="Administration\RequestAdminApplication.cs" />
     <Compile Include="Administration\RequestAdminRole.cs" />
+    <Compile Include="Administration\RequestAdminRoleApplication.cs" />
     <Compile Include="Administration\RequestAdminUser.cs" />
     <Compile Include="Administration\RequestUserValidate.cs" />
     <Compile Include="Administration\ResponseAdminApplication.cs" />
     <Compile Include="Administration\ResponseAdminRole.cs" />
     <Compile Include="Administration\ResponseAdminUser.cs" />
+    <Compile Include="Administration\ResponseAdminRoleApplication.cs" />
     <Compile Include="Administration\ResponseUserValidate.cs" />
     <Compile Include="Common\Request.cs" />
     <Compile Include="Common\Response.cs" />

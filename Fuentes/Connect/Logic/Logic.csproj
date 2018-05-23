@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Administration\LogicAdminApplication.cs" />
     <Compile Include="Administration\LogicAdminRole.cs" />
+    <Compile Include="Administration\LogicAdminRoleApplication.cs" />
     <Compile Include="Administration\LogicAdminUser.cs" />
     <Compile Include="Administration\LogicAdminUserApi.cs" />
     <Compile Include="Error\LogicLogError.cs" />
