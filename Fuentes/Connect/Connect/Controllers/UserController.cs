@@ -20,10 +20,13 @@ namespace Connect.Controllers
             try
             {
                 LogicAdminUser logicUser = new LogicAdminUser();
-                if (logicUser.validateUser(request.user, request.password))
+                string userName = "";
+
+                if (logicUser.validateUser(request.user, request.password, ref userName))
                 {
                     response.code = 0;
                     response.message = "Correcto";
+                    response.userName = userName;
                 }
                 else {
                     response.code = 1;

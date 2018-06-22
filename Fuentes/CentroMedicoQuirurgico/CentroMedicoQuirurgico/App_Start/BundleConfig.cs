@@ -14,6 +14,9 @@ namespace CentroMedicoQuirurgico
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/general").Include(
+                        "~/Scripts/GeneralFunctions.js"));
+
             //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
             //            "~/Scripts/jquery.unobtrusive*",
             //            "~/Scripts/jquery.validate*"));
@@ -40,7 +43,8 @@ namespace CentroMedicoQuirurgico
             //            "~/Content/themes/base/jquery.ui.theme.css"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                        "~/Content/bootstrap.css"));
+                        "~/Content/bootstrap.css",
+                        "~/Content/Site.css"));
             
         }
     }

@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Ver parametro de sistema";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using CentroMedicoQuirurgico.Models.Entity.Admin;
+@model RequestAdminGlobalParam
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h2>Vista par&aacute;metro de sistema</h2>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="form-group">
+            @Html.LabelFor(model => model.id)
+            @Html.TextBoxFor(model => model.id, new { @class = "form-control", @readonly = "true" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.value)
+            @Html.TextBoxFor(model => model.value, new { @class = "form-control", @readonly = "true" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.detail)
+            @Html.TextBoxFor(model => model.detail, new { @class = "form-control", @readonly = "true" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.stateRecord)
+            @Html.DropDownListFor(model => model.stateRecord, Model.getLstState(), new { @class = "form-control", @readonly = "true" })
+        </div>
+        <div class="modal-footer">
+            <a href="/Admin/Parameter" class="btn btn-outline-danger">Regresar</a>
+        </div>
+    </div>
+</div>
+

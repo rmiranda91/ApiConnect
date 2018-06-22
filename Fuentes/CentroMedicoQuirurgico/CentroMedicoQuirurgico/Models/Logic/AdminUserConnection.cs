@@ -5,6 +5,8 @@ using System.Net;
 using System.Web;
 using CentroMedicoQuirurgico.Models.Entity;
 using Newtonsoft.Json;
+using System.Text;
+using System.Configuration;
 
 namespace CentroMedicoQuirurgico.Models.Logic
 {
@@ -12,23 +14,20 @@ namespace CentroMedicoQuirurgico.Models.Logic
     {
         public ValidateUserResponse validateUser(ValidateUserRequest request) {
             ValidateUserResponse response = new ValidateUserResponse();
-            string URI = "http://localhost:3518/api/User/validate";
-            string json = JsonConvert.SerializeObject(request);
 
-            using (WebClient wc = new WebClient())
-            {
-                wc.Headers[HttpRequestHeader.ContentType] = "application/json";
-                wc.Headers[HttpRequestHeader.ContentEncoding] = "UTF-8";
-                wc.Headers[HttpRequestHeader.Authorization] = "Basic " + LogicCommon.encondeBase64("clientDesktop:password");
-
-                string HtmlResult = wc.UploadString(URI, json);
-
-                response = JsonConvert.DeserializeObject<ValidateUserResponse>(HtmlResult);
+            try
+            {   
+                LogicCommon com = new LogicCommon();
+                string result = "";
+                result = com.HttpPost("user/validate", request);
+                response = JsonConvert.DeserializeObject<ValidateUserResponse>(result);
+            }
+            catch (Exception ex) {
+                response.code = -1;
+                response.message = "Ocurrio un error inesperado, favor avisar al administrador.";
             }
 
-
             return response;
-
         }
 
     }

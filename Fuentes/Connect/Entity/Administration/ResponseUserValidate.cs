@@ -9,6 +9,6 @@ namespace Entity.Administration
 {
     public class ResponseUserValidate : Response
     {
-
+        public string userName { get; set; }
     }
 }

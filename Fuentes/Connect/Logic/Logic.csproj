@@ -40,6 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administration\LogicAdminApplication.cs" />
+    <Compile Include="Administration\LogicAdminClsMaster.cs" />
+    <Compile Include="Administration\LogicAdminCompany.cs" />
+    <Compile Include="Administration\LogicAdminWareHouse.cs" />
+    <Compile Include="Administration\LogicAdminGlobalParam.cs" />
     <Compile Include="Administration\LogicAdminRole.cs" />
     <Compile Include="Administration\LogicAdminRoleApplication.cs" />
     <Compile Include="Administration\LogicAdminUser.cs" />

@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Permisos de Rol";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using CentroMedicoQuirurgico.Models.Entity.Admin;
+@model Tuple<ResponseAdminRoleApplicationList, RequestAdminRoleApplication, ResponseAdminRoleApplication>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h2>Permisos de Rol</h2>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        @using (Html.BeginForm("updateRoleApplication","Admin",FormMethod.Post))
+        { 
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8">
+                    <!-- Construir select de Roles  -->
+                    <label for="ddlRole">Rol</label>
+                    @Html.DropDownListFor(model => model.Item2.idRole, Model.Item1.lstRole, new { @class = "form-control", @Name = "ddl_role", @onChange = "loadRole(this.value);"})
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                    <label for="ddlRole">&nbsp;</label>
+                    <button type="submit" class="btn btn-success btn-block">Aceptar</button>
+                </div>
+            </div>
+            <hr />
+            <!-- Construir listado de opciones -->
+            <table id="tblApplications">
+                <thead>
+                    <tr>
+                        <th scope="col">Opci&oacute;n</th>
+                        <th scope="col">Habilitado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+            string check = "";
+            foreach (ResponseAdminApplicationDetail i in Model.Item1.lstApplication)
+            {
+                check = "";
+                        <tr>
+                            <td data-label="Opci&oacute;n">@i.detail</td>
+                            @{
+                // Buscar si la opción existe en la lista de permisos
+                if (Model.Item1.lst != null)
+                {
+                    if (Model.Item1.lst.Where(app => app.idApplication == i.id).Count() > 0)
+                    {
+                        check = "checked";
+                    }
+                }
+                            }
+                            <td data-label="Habilitado">
+                                <input id="chk_@i.id" value="@i.id" name="chk_approle" type="checkbox" @check />
+                            </td>
+                        </tr>    
+            }
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>

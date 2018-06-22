@@ -1,0 +1,194 @@
+﻿@{
+    ViewBag.Title = "Actualizar Usuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using CentroMedicoQuirurgico.Models.Entity.Admin;
+@model Tuple<ResponseAdminUserList, RequestAdminUser, ResponseAdminUserDetail, ResponseAdminUser>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h2>Usuarios</h2>
+        <hr />
+    </div>
+</div>
+<!-- Mensajes -->
+@if (Session["msgOk"] != null)
+{
+    if (Session["msgOk"].ToString() != "")
+    {
+    <div class="row alert alert-success">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p>@Session["msgOk"].ToString()</p>
+        </div>
+    </div>
+    }
+}
+@if (Session["msgEr"] != null)
+{
+    if (Session["msgEr"].ToString() != "")
+    {
+    <div class="row alert alert-danger">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p>@Session["msgEr"].ToString()</p>
+        </div>
+    </div>
+    }
+}
+<!-- limpiar variables de mensajes -->
+@{
+    if (Session["msgOk"] != null)
+    {
+        Session["msgOk"] = "";
+    }
+
+    if (Session["msgEr"] != null)
+    {
+        Session["msgEr"] = "";
+    }
+}
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+
+        @using (Html.BeginForm("UpdateUser", "Admin", FormMethod.Post))
+        { 
+            <!-- Id de usuario -->
+            <div class="row" style="display: none">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Item2.id)
+                        @Html.TextBoxFor(model => model.Item2.id, new { @class = "form-control", @required = "", @readonly="" })
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Item2.idPerson)
+                        @Html.TextBoxFor(model => model.Item2.idPerson, new { @class = "form-control", @required = "", @readonly="" })
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Item2.profession)
+                        @Html.TextBoxFor(model => model.Item2.profession, new { @class = "form-control", @required = "", @readonly="" })
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Primera Fila Datos -->
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Item2.firstName)
+                        @Html.TextBoxFor(model => model.Item2.firstName, new { @class = "form-control", @required = "" })
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Item2.secondName)
+                        @Html.TextBoxFor(model => model.Item2.secondName, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <!-- Segunda Fila Datos -->
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Item2.firstLastName)
+                        @Html.TextBoxFor(model => model.Item2.firstLastName, new { @class = "form-control", @required = "" })
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Item2.secondLastName)
+                        @Html.TextBoxFor(model => model.Item2.secondLastName, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <!-- Tercera Fila Datos -->
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Item2.dateBorn)
+                        @Html.TextBoxFor(model => model.Item2.dateBorn, "{0:yyyy-MM-dd}",new { @class = "form-control", @type = "Date", @required = "" })
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Item2.idRole)
+                        @Html.DropDownListFor(model => model.Item2.idRole, Model.Item1.lstRole, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <!-- Cuarta Fila Datos -->
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Item2.loginName)
+                        @Html.TextBoxFor(model => model.Item2.loginName, new { @class = "form-control", required = "" })
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Item2.personalKey)
+                        @Html.TextBoxFor(model => model.Item2.personalKey, new { @class = "form-control", @type = "Password", required = "" })
+                    </div>
+                </div>
+            </div>
+            <!-- Quinta Fila Datos -->
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Item2.typeDocument)
+                        @Html.DropDownListFor(model => model.Item2.typeDocument, Model.Item1.lstTypeDocument, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Item2.document)
+                        @Html.TextBoxFor(model => model.Item2.document, new { @class = "form-control", required = "" })
+                    </div>
+                </div>
+            </div>
+            <!-- Sexta Fila Datos -->
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Item2.homeAddress)
+                        @Html.TextAreaFor(model => model.Item2.homeAddress, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <!-- Septima Fila Datos -->
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Item2.movilPhone1)
+                        @Html.TextBoxFor(model => model.Item2.movilPhone1, new { @class = "form-control", @type = "Tel" })
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Item2.movilPhone2)
+                        @Html.TextBoxFor(model => model.Item2.movilPhone2, new { @class = "form-control", @type = "Tel" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Item2.stateRecord)
+                        @Html.DropDownListFor(model => model.Item2.stateRecord, Model.Item2.getLstState(), new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div class="modal-footer">
+                <a href="/Admin/User" class="btn btn-outline-danger">Regresar</a>
+                <button type="submit" class="btn btn-success">Aceptar</button>
+            </div>
+        
+        }
+    </div>
+</div>

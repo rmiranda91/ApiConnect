@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Modificar catálogo de sistema";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using CentroMedicoQuirurgico.Models.Entity.Admin;
+@model RequestAdminClsMaster
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h2>Modificaci&oacute;n cat&aacute;logo de sistema</h2>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        @using (Html.BeginForm("UpdateClsMaster", "Admin", FormMethod.Post))
+        { 
+                
+            <div class="form-group">
+                @Html.LabelFor(model => model.id)
+                @Html.TextBoxFor(model => model.id, new { @class = "form-control", @readonly = "true" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.catalogId)
+                @Html.TextBoxFor(model => model.catalogId, new { @class = "form-control"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.value)
+                @Html.TextBoxFor(model => model.value, new { @class = "form-control"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.subValue)
+                @Html.TextBoxFor(model => model.subValue, new { @class = "form-control"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.detail)
+                @Html.TextBoxFor(model => model.detail, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.child)
+                @Html.DropDownListFor(model => model.child, Model.getLstTypeOption(), new { @class = "form-control"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.stateRecord)
+                @Html.DropDownListFor(model => model.stateRecord, Model.getLstState(), new { @class = "form-control" })
+            </div>
+            <div class="modal-footer">
+                <a href="/Admin/ClsMaster" class="btn btn-outline-danger">Regresar</a>
+                <button type="submit" class="btn btn-success">Aceptar</button>
+            </div>
+        }
+    </div>
+</div>

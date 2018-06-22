@@ -9,5 +9,6 @@ namespace CentroMedicoQuirurgico.Models.Entity
     {
         public int code { get; set; }
         public string message { get; set; }
+        public string userName { get; set; }
     }
 }

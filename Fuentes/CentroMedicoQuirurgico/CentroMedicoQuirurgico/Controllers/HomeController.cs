@@ -29,8 +29,12 @@ namespace CentroMedicoQuirurgico.Controllers
                 AdminUserConnection cnn = new AdminUserConnection();
                 response = cnn.validateUser(valUser);
 
-                if(response.code == 0)
+                if (response.code == 0)
+                {
+                    Session.Add("user", valUser.user);
+                    Session.Add("userName", response.userName);
                     return RedirectToAction("Bienvenido", "Home");
+                }
             }
 
             ViewBag.message = response.message;
@@ -42,6 +46,14 @@ namespace CentroMedicoQuirurgico.Controllers
         [HttpGet]
         public ActionResult Bienvenido() {
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Salir() {
+            Session.Clear();
+            Session.Abandon();
+
+            return RedirectToAction("Login", "Home");
         }
 
     }

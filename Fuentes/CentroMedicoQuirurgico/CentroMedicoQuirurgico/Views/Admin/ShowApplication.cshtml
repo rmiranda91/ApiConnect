@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "ShowApplication";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using CentroMedicoQuirurgico.Models.Entity.Admin;
+@model RequestAdminApplication
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h2>Vista Opci&oacute;n</h2>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="form-group">
+            @Html.LabelFor(model => model.detail)
+            @Html.TextBoxFor(model => model.detail, new { @class = "form-control", @readonly = "true" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.href)
+            @Html.TextBoxFor(model => model.href, new { @class = "form-control", @readonly = "true" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.stateRecord)
+            @Html.DropDownListFor(model => model.stateRecord, Model.getLstState(), new { @class = "form-control", @readonly = "true" })
+        </div>
+        <div class="modal-footer">
+            <a href="/Admin/Application" class="btn btn-outline-danger">Regresar</a>
+        </div>
+    </div>
+</div>
+
+

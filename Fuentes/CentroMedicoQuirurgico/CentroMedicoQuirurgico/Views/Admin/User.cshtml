@@ -1,0 +1,239 @@
+﻿@{
+    ViewBag.Title = "Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using CentroMedicoQuirurgico.Models.Entity.Admin;
+@model Tuple<ResponseAdminUserList,RequestAdminUser,ResponseAdminUserDetail,ResponseAdminUser>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h2>Usuarios</h2>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="searchIcon"><i class="fas fa-search"></i></span>
+                    </div>
+                    <input type="text" id="txtFiltro" class="form-control" onkeyup="filterTable(2)" placeholder="Buscar por nombre" aria-describedby="searchIcon" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target=".modalAdd">Nuevo</button>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<!-- Mensajes -->
+@if (Session["msgOk"] != null)
+{
+    if (Session["msgOk"].ToString() != "")
+    {
+    <div class="row alert alert-success">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p>@Session["msgOk"].ToString()</p>
+        </div>
+    </div>
+    }
+}
+@if (Session["msgEr"] != null)
+{
+    if (Session["msgEr"].ToString() != "")
+    {
+    <div class="row alert alert-danger">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <p>@Session["msgEr"].ToString()</p>
+        </div>
+    </div>
+    }
+}
+<!-- limpiar variables de mensajes -->
+@{
+    if (Session["msgOk"] != null)
+    {
+        Session["msgOk"] = "";
+    }
+
+    if (Session["msgEr"] != null)
+    {
+        Session["msgEr"] = "";
+    }
+}
+
+<!-- Tabla con datos -->
+<div class="row">
+    <div>
+        <table id="tblData">
+            <thead>
+                <tr>
+                    <th scope="col">Identificador</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Usu. Ingreso</th>
+                    <th scope="col">Fecha Ingreso</th>
+                    <th scope="col">Usu. Modifica</th>
+                    <th scope="col">Fecha Modifica</th>
+                    <th scope="col">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (ResponseAdminUserDetail i in Model.Item1.lst)
+                    {
+                    <tr>
+                        <td data-label="Identificador">@i.id</td>
+                        <td data-label="Usuario">@i.loginName</td>
+                        <td data-label="Nombre">@i.name</td>
+                        <td data-label="Estado">@i.stateRecord</td>
+                        <td data-label="Usu. Ingreso">@i.userRegister</td>
+                        <td data-label="Fecha Ingreso">@i.dateRegister</td>
+                        <td data-label="Usu. Modifica">@i.userUpdate</td>
+                        <td data-label="Fecha Modifica">@i.dateUpdate</td>
+                        <td>
+                            @{
+                        string urlUpdate = "/Admin/UpdateUser/" + i.id.ToString();
+                        string urlShow = "/Admin/ShowUser/" + i.id.ToString();
+                            }
+                            <a href="@urlUpdate"><span class="btn btn-warning far fa-edit"></span></a>
+                            <a href="@urlShow"><span class="btn btn-primary far fa-eye"></span></a>
+                        </td>
+                    </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Modal Agregar Registro -->
+<div class="modal fade modalAdd" tabindex="-1" role="dialog" aria-labelledby="modalAdd" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header success-modal">
+                <h5 class="modal-title">Nuevo Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Html.BeginForm("addUser", "Admin", FormMethod.Post))
+            { 
+                <div class="modal-body">
+                    <!-- Primera Fila Datos -->
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Item2.firstName)
+                                @Html.TextBoxFor(model => model.Item2.firstName, new { @class = "form-control", @required="" })
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Item2.secondName)
+                                @Html.TextBoxFor(model => model.Item2.secondName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Segunda Fila Datos -->
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Item2.firstLastName)
+                                @Html.TextBoxFor(model => model.Item2.firstLastName, new { @class = "form-control", @required="" })
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Item2.secondLastName)
+                                @Html.TextBoxFor(model => model.Item2.secondLastName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tercera Fila Datos -->
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Item2.dateBorn)
+                                @Html.TextBoxFor(model => model.Item2.dateBorn, new { @class = "form-control", @type = "Date", @required="" })
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Item2.idRole)
+                                @Html.DropDownListFor(model => model.Item2.idRole, Model.Item1.lstRole, new { @class="form-control"})
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Cuarta Fila Datos -->
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Item2.loginName)
+                                @Html.TextBoxFor(model => model.Item2.loginName, new { @class = "form-control", required="" })
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Item2.personalKey)
+                                @Html.TextBoxFor(model => model.Item2.personalKey, new { @class = "form-control", @type = "Password", required="" })
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Quinta Fila Datos -->
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Item2.typeDocument)
+                                @Html.DropDownListFor(model => model.Item2.typeDocument, Model.Item1.lstTypeDocument, new { @class = "form-control"})
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Item2.document)
+                                @Html.TextBoxFor(model => model.Item2.document, new { @class = "form-control", required ="" })
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sexta Fila Datos -->
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Item2.homeAddress)
+                                @Html.TextAreaFor(model => model.Item2.homeAddress, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Septima Fila Datos -->
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Item2.movilPhone1)
+                                @Html.TextBoxFor(model => model.Item2.movilPhone1, new { @class = "form-control", @type="Tel" })
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Item2.movilPhone2)
+                                @Html.TextBoxFor(model => model.Item2.movilPhone2, new { @class = "form-control", @type="Tel" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-success">Aceptar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

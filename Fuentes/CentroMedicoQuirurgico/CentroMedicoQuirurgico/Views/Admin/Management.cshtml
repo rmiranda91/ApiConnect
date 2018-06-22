@@ -1,0 +1,126 @@
+﻿@{
+    ViewBag.Title = "Administración";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h2>Administraci&oacute;n</h2>
+        <hr />
+    </div>
+</div>
+<div class="row text-center align-middle">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-sm-6 col-md-6 col-lg-6">
+                    <span class="fas fa-address-card fa-5x"></span>
+                </div>
+                <div class="col-sm-12 col-sm-6 col-md-6 col-lg-6">
+                    @Html.ActionLink("Perfiles de Usuario", "Role", "Admin")
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-sm-6 col-md-6 col-lg-6">
+                    <span class="fas fa-clipboard-list fa-5x"></span>
+                </div>
+                <div class="col-sm-12 col-sm-6 col-md-6 col-lg-6">
+                    @Html.ActionLink("Opciones de Sistema","Application","Admin")
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-sm-6 col-md-6 col-lg-6">
+                    <span class="fas fa-clipboard-check fa-5x"></span>
+                </div>
+                <div class="col-sm-12 col-sm-6 col-md-6 col-lg-6">
+                    @Html.ActionLink("Permisos de Perfiles","RoleApplication", "Admin")
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-sm-6 col-md-6 col-lg-6">
+                    <span class="fas fa-user-alt fa-5x"></span>
+                </div>
+                <div class="col-sm-12 col-sm-6 col-md-6 col-lg-6">
+                    @Html.ActionLink("Registro de usuarios","User","Admin")
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-sm-6 col-md-6 col-lg-6">
+                    <span class="fas fa-cog fa-5x"></span>
+                </div>
+                <div class="col-sm-12 col-sm-6 col-md-6 col-lg-6">
+                    @Html.ActionLink("Parámetros de sistema","Parameter","Admin")
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-sm-6 col-md-6 col-lg-6">
+                    <span class="fas fa-book fa-5x"></span>
+                </div>
+                <div class="col-sm-12 col-sm-6 col-md-6 col-lg-6">
+                    @Html.ActionLink("Catálogos de sistema","ClsMaster","Admin")
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-sm-6 col-md-6 col-lg-6">
+                    <span class="fas fa-hospital fa-5x"></span>
+                </div>
+                <div class="col-sm-12 col-sm-6 col-md-6 col-lg-6">
+                    @Html.ActionLink("Sedes hospitalarias","Company","Admin")
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12 col-sm-6 col-md-6 col-lg-6">
+                    <span class="fas fa-boxes fa-5x"></span>
+                </div>
+                <div class="col-sm-12 col-sm-6 col-md-6 col-lg-6">
+                    @Html.ActionLink("Bodegas de inventario","WareHouse","Admin")
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

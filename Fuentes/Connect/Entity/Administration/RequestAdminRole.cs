@@ -7,8 +7,7 @@ using Entity.Common;
 
 namespace Entity.Administration
 {
-    public class RequestAdminRole : Request
-    {
+    public class RequestAdminRole : Request {
         public int id { get; set; }
         public string name { get; set; }
         public string detail { get; set; }

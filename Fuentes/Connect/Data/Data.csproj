@@ -41,10 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administration\DataAdminApplication.cs" />
+    <Compile Include="Administration\DataAdminClsMaster.cs" />
+    <Compile Include="Administration\DataAdminCompany.cs" />
+    <Compile Include="Administration\DataAdminGlobalParam.cs" />
     <Compile Include="Administration\DataAdminRole.cs" />
     <Compile Include="Administration\DataAdminRoleApplication.cs" />
     <Compile Include="Administration\DataAdminUserApi.cs" />
     <Compile Include="Administration\DataAdminUser.cs" />
+    <Compile Include="Administration\DataAdminWareHouse.cs" />
     <Compile Include="DataBase.cs" />
     <Compile Include="Error\DataLogError.cs" />
     <Compile Include="Person\DataPersonCrud.cs" />

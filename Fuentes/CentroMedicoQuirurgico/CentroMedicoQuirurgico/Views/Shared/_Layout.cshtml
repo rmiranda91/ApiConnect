@@ -5,12 +5,70 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
 <body>
-    @RenderBody()
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        @Html.ActionLink("CMQ25av", "Bienvenido", "Home", null, new { @class="navbar-brand"})
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="menuAdmin" role="button" 
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administraci&oacute;n
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/Admin/Management">Men&uacute; Administraci&oacute;n</a>
+                        <a class="dropdown-item" href="/Admin/Role">Perfiles de Usuario</a>
+                        <a class="dropdown-item" href="/Admin/Application">Opciones de Sistema</a>
+                        <a class="dropdown-item" href="/Admin/RoleApplication">Permisos de Perfiles</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/Admin/User">Registro de Usuarios</a>
+                        <a class="dropdown-item" href="/Admin/Parameter">Par&aacute;metros de Sistema</a>
+                        <a class="dropdown-item" href="/Admin/ClsMaster">Cat&aacute;logos de Sistema</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/Admin/Company">Sedes Hospitalarias</a>
+                        <a class="dropdown-item" href="/Admin/WareHouse">Bodegas de Inventario</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Administraci&oacute;n</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav my-2 my-lg-0">
+                <i class="fas fa-user-cog fa-2x"></i>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" 
+                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>Mi Perfil</b></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown2">
+                        <a class="dropdown-item" href="#">Mis Datos</a>
+                        <a class="dropdown-item" href="#">Cambiar Contrase&ntilde;a</a>
+                        <div class="dropdown-divider"></div>
+                        @Html.ActionLink("Salir","Salir","Home",null,new{@class="dropdown-item"})
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" method="get" action="/Home/Salir">                
+                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Salir</button>
+            </form>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="jumbotron">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery", "~/bundles/bootstrap", "~/bundles/general")
 </body>
 </html>

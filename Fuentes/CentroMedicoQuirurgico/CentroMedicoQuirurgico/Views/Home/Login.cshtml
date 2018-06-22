@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>Ingreso</title>
 
-    @Styles.Render("~/Content/css");
+    @Styles.Render("~/Content/css")
 
 </head>
 <body>
@@ -20,30 +20,20 @@
                 <br />
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <br />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <br />
-            </div>
-        </div>
-        <div class="row justify-content-center align-items-center">
+        <div class="row justify-content-center align-items-center loginBox">
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="card border-primary mb-3">
-                    <div class="card-header text-center">Ingreso</div>
-                    <div class="card-body text-primary">
+                    <div class="card-header text-center"><h3><b>Ingreso</b></h3></div>
+                    <div class="card-body">
                         @using (Html.BeginForm())
                         {
                             
                             <div class="form-group">
-                                <label for="txt_usuario">Usuario</label>
+                                <label for="txt_usuario"><b>Usuario</b></label>
                                 @Html.TextBoxFor(m => Model.user, new { @class="form-control", @placeholder="Ingresa tu usuario" })
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Contrase&ntilde;a</label>
+                                <label for="exampleInputPassword1"><b>Contrase&ntilde;a</b></label>
                                 @Html.PasswordFor(m => Model.password, new { @class="form-control", @placeholder="Ingresa tu contraseña" })
                             </div>
                             <div class="form-group">
@@ -58,6 +48,6 @@
         </div>
     </div>
 
-    @Scripts.Render("~/bundles/jquery", "~/bundles/bootstrap");
+    @Scripts.Render("~/bundles/jquery", "~/bundles/bootstrap")
 </body>
 </html>

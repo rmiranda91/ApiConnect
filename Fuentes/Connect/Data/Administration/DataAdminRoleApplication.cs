@@ -20,7 +20,8 @@ namespace Data.Administration
                 SqlParameter[] param = new SqlParameter[1];
                 DataBase db = new DataBase();
 
-                param[0] = new SqlParameter("@id", request.id);
+                param[0] = new SqlParameter("@id", request.idRole);
+                
                 response = db.executeDataTable("spGetAdminRoleApplication", param);
 
                 return response;

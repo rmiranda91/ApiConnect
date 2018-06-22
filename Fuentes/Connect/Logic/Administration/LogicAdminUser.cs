@@ -13,7 +13,7 @@ namespace Logic.Administration
 {
     public class LogicAdminUser
     {
-        public bool validateUser(string user, string password)
+        public bool validateUser(string user, string password, ref string userName)
         {
             try
             {
@@ -25,8 +25,9 @@ namespace Logic.Administration
 
                 if (objresponse != null)
                 {
-                    if (objresponse.ToString() == "ok")
+                    if (objresponse.ToString().Split('|')[0] == "OK")
                     {
+                        userName = objresponse.ToString().Split('|')[1];
                         response = true;
                     }
                 }
