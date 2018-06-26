@@ -5,6 +5,7 @@ using System.Web;
 using System.Configuration;
 using Newtonsoft.Json;
 using System.Net;
+using System.Text;
 
 namespace CentroMedicoQuirurgico.Models.Logic
 {
@@ -35,9 +36,14 @@ namespace CentroMedicoQuirurgico.Models.Logic
 
                 using (WebClient wc = new WebClient())
                 {
-                    wc.Headers[HttpRequestHeader.ContentType] = "application/json;charset=utf-8";
+                    wc.Encoding = Encoding.UTF8;
+                    wc.Headers[HttpRequestHeader.ContentType] = "application/json;charset=UTF-8";
                     wc.Headers[HttpRequestHeader.ContentEncoding] = "UTF-8";
                     wc.Headers[HttpRequestHeader.Authorization] = "Basic " + LogicCommon.encondeBase64(user + ":" + pwd);
+
+                    // Pasar a encoding UTF-8 el json
+                    byte[] bytes = Encoding.UTF8.GetBytes(json);
+                    json = Encoding.UTF8.GetString(bytes);
 
                     HtmlResult = wc.UploadString(uri, json);                    
                 }
